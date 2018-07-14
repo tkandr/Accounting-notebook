@@ -8,7 +8,7 @@ export default class Transaction {
     this.id = uuid();
     this.type = type;
     this.amount = amount;
-    this.effectiveDate = moment().format('YYYY-MM-DD hh:mm:ss');
+    this.effectiveDate = moment().format('YYYY-MM-DD HH:mm:ss');
   }
 
   /**

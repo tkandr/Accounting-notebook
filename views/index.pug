@@ -1,5 +1,26 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.transactions-container
+    h1 Accounting notebook
+
+    if !transactions || !transactions.length
+      h3 No transactions yet
+    else
+      each transaction in transactions
+        div.accordion
+          span.date #{transaction.effectiveDate}
+          span.amount #{formatter(transaction.getAmountWithSign())}
+          span(class="type " + transaction.type) #{transaction.type}
+        div.panel
+          div.row
+            label Date:
+            | #{ transaction.effectiveDate}
+          div.row
+            label Amount:
+            | #{formatter(transaction.getAmountWithSign())}
+          div.row
+            label Transaction-type:
+            | #{ transaction.type}
+
+  script(src='/js/accordion.js')
